@@ -1,0 +1,37 @@
+/* Distribución común del encabezado y la navegación principal. */
+.encabezado {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 0.55rem 1.5rem;
+  padding-block: 0.65rem;
+}
+
+.encabezado .marca { grid-column: 1; }
+.encabezado .boton-icono { grid-column: 2; margin-left: 0; }
+
+.encabezado nav {
+  grid-column: 1 / -1;
+  grid-row: 2;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  gap: clamp(0.25rem, 0.55vw, 0.6rem);
+  width: 100%;
+  min-width: 0;
+  margin: 0;
+  padding: 0.2rem 0 0.35rem;
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+
+.encabezado nav a {
+  flex: 0 0 auto;
+  white-space: nowrap;
+  font-size: clamp(0.94rem, 1.15vw, 1.05rem);
+}
+
+@media (max-width: 720px) {
+  .encabezado { gap: 0.45rem 0.75rem; }
+  .encabezado nav { justify-content: flex-start; }
+  .encabezado nav a { font-size: 0.94rem; }
+}

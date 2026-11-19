@@ -1,0 +1,117 @@
+@import url("reconocimientos.css");
+
+.portada--lugares {
+  grid-template-columns: minmax(0, 1fr) minmax(17rem, 28rem);
+  min-height: min(42rem, calc(100vh - 4.5rem));
+}
+
+.portada--lugares h1 { max-width: 11ch; }
+
+.coordenadas {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-content: end;
+  width: min(100%, 27rem);
+  aspect-ratio: 1;
+  padding: clamp(1.5rem, 4vw, 3rem);
+  border: 1px solid var(--dorado);
+  border-radius: 50% 50% 4% 50%;
+  color: var(--bordo);
+  transform: rotate(-4deg);
+}
+
+.coordenadas span { align-self: end; font: 0.78rem Arial, sans-serif; letter-spacing: 0.12em; }
+.coordenadas strong { grid-column: 1 / -1; align-self: center; font-size: clamp(2.5rem, 5vw, 4.75rem); font-weight: 400; letter-spacing: 0.03em; }
+
+.sepulcro { background: var(--papel); }
+.sabios { background: var(--papel-claro); }
+.imagen-memoria { width: min(100%, 76rem); margin-inline: auto; }
+.imagen-memoria .abrir-imagen { border: 1px solid var(--linea); background: #d8d0c2; }
+.imagen-memoria img { width: 100%; height: 100%; object-fit: contain; }
+.imagen-memoria--vertical { width: min(100%, 62rem); }
+.imagen-memoria--vertical .abrir-imagen { aspect-ratio: 3 / 2; }
+.imagen-memoria--panoramica .abrir-imagen { aspect-ratio: 730 / 225; }
+.imagen-memoria figcaption { max-width: 66rem; }
+.imagen-memoria figcaption a { color: var(--bordo); }
+
+.nombres-sabios {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  width: min(100%, 76rem);
+  margin: clamp(3rem, 6vw, 6rem) auto 0;
+  border-top: 1px solid var(--linea);
+  border-bottom: 1px solid var(--linea);
+}
+
+.nombres-sabios article { padding: 1.5rem 1rem; border-right: 1px solid var(--linea); }
+.nombres-sabios article:last-child { border-right: 0; }
+.nombres-sabios span { color: var(--dorado); font: 800 0.72rem Arial, sans-serif; }
+.nombres-sabios h3 { font-size: 1.15rem; }
+.nombres-sabios p { margin-bottom: 0; color: var(--tinta-suave); font-size: 0.9rem; }
+.nombres-sabios__vucetich { background: color-mix(in srgb, var(--dorado) 13%, transparent); }
+
+.parque {
+  display: grid;
+  grid-template-columns: minmax(16rem, 0.7fr) minmax(0, 1.3fr);
+  gap: clamp(3rem, 8vw, 8rem);
+  padding: clamp(4.5rem, 8vw, 9rem) clamp(1.25rem, 7vw, 8rem);
+  background: var(--bordo-oscuro);
+  color: #fff;
+}
+
+.parque .etiqueta { color: #e3bd78; }
+.parque__texto { max-width: 47rem; color: #e8ddcf; font-size: 1.15rem; }
+.parque__texto p:first-child { margin-top: 0; }
+
+.memoria-institucional { background: var(--papel-claro); }
+.instituciones { display: grid; gap: clamp(2rem, 5vw, 5rem); }
+.institucion {
+  display: grid;
+  grid-template-columns: minmax(16rem, 0.7fr) minmax(0, 1.3fr);
+  min-height: 32rem;
+  border: 1px solid var(--linea);
+  background: var(--papel);
+  box-shadow: var(--sombra);
+}
+.institucion--escuela { grid-template-columns: minmax(0, 1.3fr) minmax(16rem, 0.7fr); }
+.institucion--escuela .abrir-imagen { order: 2; }
+.institucion .abrir-imagen { height: 100%; min-height: 30rem; box-shadow: none; }
+.institucion img { width: 100%; height: 100%; object-fit: cover; }
+.institucion:first-child img { object-position: center; }
+.institucion__texto { display: flex; flex-direction: column; justify-content: center; padding: clamp(2rem, 5vw, 5rem); }
+.institucion__texto h3 { font-size: clamp(1.8rem, 3vw, 3rem); font-weight: 500; }
+.institucion__texto > p:not(.etiqueta, .credito) { color: var(--tinta-suave); font-size: 1.08rem; }
+.institucion__texto .credito { margin-top: auto; padding-top: 2rem; color: var(--tinta-suave); font-size: 0.85rem; }
+
+.fuentes {
+  display: grid;
+  grid-template-columns: minmax(16rem, 0.7fr) minmax(0, 1.3fr);
+  gap: clamp(2rem, 7vw, 7rem);
+  padding: clamp(4rem, 7vw, 7rem) clamp(1.25rem, 7vw, 8rem);
+}
+.fuentes h2 { font-size: clamp(2rem, 4vw, 3.5rem); }
+.fuentes ul { margin: 0; padding: 0; list-style: none; }
+.fuentes li { border-top: 1px solid var(--linea); }
+.fuentes li:last-child { border-bottom: 1px solid var(--linea); }
+.fuentes a { display: block; padding: 1.25rem 0; color: var(--tinta); text-underline-offset: 0.3rem; }
+.fuentes a:hover { color: var(--bordo); }
+
+@media (max-width: 1050px) {
+  .nombres-sabios { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .nombres-sabios article { border-bottom: 1px solid var(--linea); }
+}
+
+@media (max-width: 900px) {
+  .portada--lugares, .parque, .fuentes { grid-template-columns: 1fr; }
+  .portada--lugares { min-height: auto; }
+  .coordenadas { width: min(70vw, 22rem); }
+  .institucion, .institucion--escuela { grid-template-columns: 1fr; }
+  .institucion--escuela .abrir-imagen { order: 0; }
+  .institucion .abrir-imagen { min-height: 24rem; }
+}
+
+@media (max-width: 620px) {
+  .nombres-sabios { grid-template-columns: 1fr; }
+  .nombres-sabios article { border-right: 0; }
+  .imagen-memoria--panoramica .abrir-imagen { aspect-ratio: 4 / 3; }
+}

@@ -1,0 +1,579 @@
+/* Página Cédula de identidad */
+.portada--cedula {
+  grid-template-columns: 1fr;
+  justify-items: center;
+  align-items: end;
+  padding-block: clamp(4.5rem, 9vw, 9rem);
+}
+
+.portada--cedula .portada__texto { width: min(100%, 62rem); }
+.portada--cedula h1 { max-width: 15ch; }
+
+.secuencia-documental {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(2rem, 5vw, 5rem);
+}
+
+.paso {
+  padding: 1.5rem;
+  border: 1px solid var(--linea);
+  background: var(--papel-claro);
+  box-shadow: 0 10px 30px rgb(53 42 31 / 7%);
+}
+
+.paso__cabecera {
+  display: flex;
+  align-items: baseline;
+  gap: 0.8rem;
+  margin-bottom: 1rem;
+}
+
+.paso__cabecera span {
+  color: var(--dorado);
+  font: 800 0.75rem Arial, sans-serif;
+  letter-spacing: 0.12em;
+}
+
+.paso__cabecera h3 { margin: 0; }
+.paso .abrir-imagen { height: clamp(25rem, 48vw, 42rem); }
+.paso img { width: 100%; height: 100%; object-fit: contain; }
+.paso--horizontal { grid-column: span 1; }
+
+.paso--huella {
+  grid-column: 1 / -1;
+  padding: clamp(1.5rem, 4vw, 3rem);
+  border-color: var(--dorado);
+  background: color-mix(in srgb, var(--papel-claro) 88%, var(--dorado));
+}
+
+.paso--huella .abrir-imagen {
+  width: min(100%, 48rem);
+  height: clamp(34rem, 67vw, 56rem);
+  margin-inline: auto;
+}
+
+.paso--huella figcaption {
+  max-width: 48rem;
+  margin-inline: auto;
+  font-size: 1.05rem;
+}
+
+.vinculo {
+  padding: clamp(4rem, 7vw, 7rem) clamp(1.25rem, 7vw, 8rem);
+  background: var(--bordo-oscuro);
+  color: #fff;
+}
+
+.vinculo .etiqueta { color: #e3bd78; }
+.vinculo h2 { max-width: 15ch; }
+.vinculo > p:last-child { max-width: 54rem; color: #e8ddcf; font-size: 1.1rem; }
+
+@media (max-width: 800px) {
+  .secuencia-documental { grid-template-columns: 1fr; }
+  .paso .abrir-imagen { height: min(40rem, 115vw); }
+  .paso--huella { grid-column: auto; }
+}
+
+/* Ajustes de Vida personal. La cabecera, el contraste y el visor son reutilizables. */
+.portada {
+  grid-template-columns: minmax(0, 1fr);
+  align-items: end;
+  justify-items: center;
+  padding-block: clamp(4.5rem, 9vw, 9rem);
+}
+
+.portada__texto {
+  width: min(100%, 62rem);
+}
+
+.portada__texto h1 { max-width: 16ch; }
+
+.pieza-destacada { max-width: 70rem; }
+.pieza-destacada .abrir-imagen { aspect-ratio: 4 / 3; }
+.pieza-destacada img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: #d8d0c2;
+}
+.pieza-destacada figcaption { max-width: 65rem; font-size: 1.05rem; }
+
+.documento--vertical .abrir-imagen { aspect-ratio: 3 / 4; }
+.documento--vertical img { object-fit: contain; transform: none; }
+
+.documentos-pareados {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: start;
+  gap: clamp(2rem, 5vw, 5rem);
+}
+
+.tarjeta-dos-caras {
+  display: grid;
+  gap: 1.75rem;
+}
+
+.tarjeta-dos-caras .documento .abrir-imagen { aspect-ratio: 4 / 3; }
+.tarjeta-dos-caras .documento img { object-fit: contain; transform: none; }
+.tarjeta-dos-caras .abrir-imagen[data-rotacion="-90"] img { transform: rotate(-90deg) scale(0.74); }
+
+.titulo-cara {
+  margin: 0 0 0.55rem;
+  color: var(--bordo);
+  font-family: Arial, sans-serif;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.estado--testimonio { color: #6b568b; }
+.pieza__imagen img { object-fit: contain; background: #d8d0c2; }
+
+.galeria { grid-auto-flow: dense; }
+
+.pieza--retrato {
+  grid-column: 1 / -1;
+  grid-template-columns: minmax(24rem, 1.3fr) minmax(18rem, 0.7fr);
+  min-height: 34rem;
+}
+
+.pieza--retrato .pieza__imagen img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transform: none;
+}
+
+.pieza--postal {
+  grid-column: 1 / -1;
+  grid-template-columns: minmax(20rem, 1.15fr) minmax(18rem, 0.85fr);
+  align-items: center;
+}
+
+.caras-tarjeta {
+  display: grid;
+  gap: 1.25rem;
+  padding: 1.5rem;
+  background: color-mix(in srgb, var(--papel) 72%, var(--papel-claro));
+}
+
+.caras-tarjeta .pieza__imagen { aspect-ratio: 4 / 3; height: auto; }
+.caras-tarjeta .pieza__imagen img { width: 100%; height: 100%; object-fit: contain; transform: none; }
+.caras-tarjeta .abrir-imagen[data-imagen$="Foto26.jpg"] img { transform: none; }
+.caras-tarjeta figcaption { margin-top: 0.35rem; }
+
+@media (max-width: 900px) {
+  .portada, .documentos-pareados { grid-template-columns: 1fr; }
+  .pieza--retrato, .pieza--postal { grid-template-columns: 1fr; }
+  .pieza--retrato { min-height: auto; }
+  .pieza--retrato .pieza__imagen { min-height: 30rem; }
+}
+
+/* Documento manuscrito asociado */
+.manuscrito-asociado__contenido {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(18rem, 0.85fr);
+  align-items: start;
+  gap: clamp(2rem, 5vw, 5rem);
+}
+
+.manuscrito-asociado__imagen .abrir-imagen { aspect-ratio: 4 / 3; }
+.manuscrito-asociado__imagen img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: #d8d0c2;
+}
+
+.transcripcion {
+  padding: clamp(1.5rem, 3vw, 2.5rem);
+  border-left: 3px solid var(--dorado);
+  background: var(--papel-claro);
+  box-shadow: 0 10px 30px rgb(53 42 31 / 7%);
+}
+
+.transcripcion h3 { margin-top: 0; }
+.transcripcion blockquote { margin: 1.5rem 0; color: var(--tinta-suave); }
+.transcripcion blockquote p { margin-block: 0.85rem; }
+
+@media (max-width: 900px) {
+  .manuscrito-asociado__contenido { grid-template-columns: 1fr; }
+}
+
+/* Página Cartas y comunicaciones */
+.portada--comunicaciones {
+  grid-template-columns: minmax(0, 1fr);
+  justify-items: center;
+  align-items: end;
+  padding-block: clamp(4.5rem, 9vw, 9rem);
+}
+
+.portada--comunicaciones .portada__texto { width: min(100%, 62rem); }
+.portada--comunicaciones h1 { max-width: 14ch; }
+
+.caras-carta {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: start;
+  gap: clamp(2rem, 5vw, 5rem);
+}
+
+.cara-carta {
+  padding: clamp(1rem, 2.5vw, 1.75rem);
+  border: 1px solid var(--linea);
+  background: var(--papel-claro);
+  box-shadow: 0 10px 30px rgb(53 42 31 / 7%);
+}
+
+.cara-carta .abrir-imagen { height: clamp(34rem, 58vw, 53rem); }
+.cara-carta img { width: 100%; height: 100%; object-fit: contain; }
+.cara-carta .abrir-imagen[data-rotacion="180"] img { transform: rotate(180deg); }
+
+.manuscrito-lectura {
+  display: grid;
+  grid-template-columns: minmax(20rem, 0.9fr) minmax(0, 1.1fr);
+  align-items: start;
+  gap: clamp(2rem, 5vw, 5rem);
+}
+
+.manuscrito-lectura__imagen {
+  padding: clamp(1rem, 2.5vw, 1.75rem);
+  border: 1px solid var(--linea);
+  background: var(--papel-claro);
+  box-shadow: 0 10px 30px rgb(53 42 31 / 7%);
+}
+
+.manuscrito-lectura__imagen .abrir-imagen { height: clamp(38rem, 62vw, 58rem); }
+.manuscrito-lectura__imagen img { width: 100%; height: 100%; object-fit: contain; }
+
+.transcripcion-carta {
+  padding: clamp(1.5rem, 3vw, 2.5rem);
+  border-left: 3px solid var(--dorado);
+  background: var(--papel-claro);
+  box-shadow: 0 10px 30px rgb(53 42 31 / 7%);
+}
+
+.transcripcion-carta > h3 { margin-top: 0; }
+.transcripcion-carta > p { color: var(--tinta-suave); }
+
+.explicacion-actual {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--linea);
+}
+
+.explicacion-actual h3 { margin-top: 0; }
+
+.carta-palacios { background: var(--papel-claro); }
+
+.carta-palacios__contenido {
+  display: grid;
+  grid-template-columns: minmax(20rem, 0.9fr) minmax(0, 1.1fr);
+  align-items: start;
+  gap: clamp(2rem, 5vw, 5rem);
+}
+
+.carta-palacios__imagen {
+  padding: clamp(1rem, 2.5vw, 1.75rem);
+  border: 1px solid var(--linea);
+  background: var(--papel);
+  box-shadow: 0 10px 30px rgb(53 42 31 / 7%);
+}
+
+.carta-palacios__imagen .abrir-imagen { aspect-ratio: 3 / 4; }
+.carta-palacios__imagen img { width: 100%; height: 100%; object-fit: contain; }
+
+.transcripcion-palacios {
+  padding: clamp(1.5rem, 3vw, 2.5rem);
+  border-left: 3px solid var(--dorado);
+  background: var(--papel);
+  box-shadow: 0 10px 30px rgb(53 42 31 / 7%);
+}
+
+.transcripcion-palacios h3 { margin-top: 0; }
+.transcripcion-palacios blockquote { margin: 1.5rem 0 0; color: var(--tinta-suave); }
+.transcripcion-palacios blockquote p { margin-block: 0.85rem; }
+
+.telegramas { background: var(--papel-claro); }
+
+.galeria-telegramas {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(2rem, 4vw, 3.5rem);
+}
+
+.telegrama {
+  padding: clamp(1rem, 2.5vw, 1.5rem);
+  border: 1px solid var(--linea);
+  background: var(--papel);
+  box-shadow: 0 10px 30px rgb(53 42 31 / 7%);
+}
+
+.telegrama .abrir-imagen {
+  aspect-ratio: 4 / 3;
+  background: #d8d0c2;
+}
+
+.telegrama img { width: 100%; height: 100%; object-fit: contain; }
+.telegrama .abrir-imagen[data-rotacion="-90"] img { transform: rotate(-90deg) scale(0.74); }
+
+.transcripcion-telegrama {
+  margin: 1rem 0 0;
+  padding-top: 1rem;
+  border-top: 1px solid var(--linea);
+  color: var(--tinta-suave);
+}
+
+.telegrama--destacado {
+  grid-column: 1 / -1;
+  width: min(100%, 62rem);
+  justify-self: center;
+  border-color: var(--dorado);
+}
+
+.telegrama--destacado .abrir-imagen {
+  aspect-ratio: 3 / 4;
+  max-height: 68rem;
+}
+
+.telegrama--suegro { order: -1; }
+
+.telegrama__distincion {
+  margin: 0 0 1rem;
+  color: var(--bordo);
+  font: 800 0.72rem Arial, sans-serif;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 800px) {
+  .caras-carta, .manuscrito-lectura, .carta-palacios__contenido, .galeria-telegramas { grid-template-columns: 1fr; }
+  .cara-carta .abrir-imagen { height: min(46rem, 125vw); }
+  .manuscrito-lectura__imagen .abrir-imagen { height: min(52rem, 140vw); }
+  .telegrama--destacado { grid-column: auto; }
+}
+
+/* Página Medalla y reconocimiento internacional */
+.portada--medalla h1 { max-width: 15ch; }
+
+.medalla-original { background: var(--papel); }
+
+.medalla-destacada {
+  width: min(100%, 62rem);
+  margin-inline: auto;
+}
+
+.medalla-destacada .abrir-imagen {
+  aspect-ratio: 4 / 3;
+  border: 1px solid var(--linea);
+}
+
+.medalla-destacada img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.medalla-destacada figcaption { font-size: 1.05rem; }
+
+.inscripcion-medalla {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  width: min(100%, 62rem);
+  margin: 2.5rem auto 0;
+  border-top: 1px solid var(--dorado);
+  border-bottom: 1px solid var(--dorado);
+}
+
+.inscripcion-medalla > div { padding: 1.5rem; }
+.inscripcion-medalla > div + div { border-left: 1px solid var(--linea); }
+.inscripcion-medalla p:last-child { margin: 0; font-size: clamp(1.15rem, 2vw, 1.5rem); }
+
+.sociedad {
+  display: grid;
+  grid-template-columns: minmax(16rem, 0.8fr) minmax(0, 1.2fr);
+  gap: clamp(2rem, 7vw, 7rem);
+  padding: clamp(4rem, 7vw, 7rem) clamp(1.25rem, 7vw, 8rem);
+  background: var(--bordo-oscuro);
+  color: #fff;
+}
+
+.sociedad .etiqueta { color: #e3bd78; }
+.sociedad h2 { max-width: 14ch; }
+.sociedad > div:first-child > p:last-child { max-width: 36rem; color: #e8ddcf; font-size: 1.1rem; }
+
+.antecedentes { display: grid; gap: 0; }
+.antecedentes article { padding: 1.5rem 0; border-top: 1px solid rgb(255 255 255 / 30%); }
+.antecedentes article:last-child { border-bottom: 1px solid rgb(255 255 255 / 30%); }
+.antecedentes p { margin: 0; color: #e8ddcf; }
+.antecedentes .antecedentes__anio { margin-bottom: 0.35rem; color: #e3bd78; font: 800 0.82rem Arial, sans-serif; letter-spacing: 0.12em; }
+
+.articulo { background: var(--papel-claro); }
+
+.comparacion-medallas,
+.periodico-completo {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(2rem, 5vw, 5rem);
+}
+
+.comparacion-medallas {
+  grid-template-columns: 1fr;
+  width: min(100%, 62rem);
+  margin: 0 auto clamp(4rem, 7vw, 7rem);
+}
+
+.comparacion-medallas figure,
+.periodico-completo figure {
+  padding: clamp(1rem, 2.5vw, 1.5rem);
+  border: 1px solid var(--linea);
+  background: var(--papel);
+  box-shadow: 0 10px 30px rgb(53 42 31 / 7%);
+}
+
+.comparacion-medallas .abrir-imagen,
+.periodico-completo .abrir-imagen { aspect-ratio: 4 / 3; }
+
+.comparacion-medallas img,
+.periodico-completo img { width: 100%; height: 100%; object-fit: contain; }
+
+.periodico-completo {
+  grid-template-columns: 1fr;
+  width: min(100%, 62rem);
+  margin-inline: auto;
+}
+
+.transcripcion-periodico { background: var(--papel); }
+
+.texto-periodistico {
+  width: min(100%, 76rem);
+  margin-inline: auto;
+  padding: clamp(2rem, 5vw, 5rem);
+  border: 1px solid var(--linea);
+  background: var(--papel-claro);
+  box-shadow: var(--sombra);
+  column-count: 2;
+  column-gap: clamp(2rem, 5vw, 5rem);
+  column-rule: 1px solid var(--linea);
+}
+
+.texto-periodistico header,
+.texto-periodistico h4,
+.texto-periodistico .epigrafe-transcripto { column-span: all; }
+
+.texto-periodistico header {
+  margin-bottom: 2.5rem;
+  padding-bottom: 2rem;
+  border-bottom: 3px double var(--tinta);
+  text-align: center;
+}
+
+.texto-periodistico .periodico-nombre {
+  margin: 0 0 1rem;
+  font: 800 0.82rem Arial, sans-serif;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.texto-periodistico header h3 { margin: 0; font-size: clamp(2.25rem, 5vw, 4.5rem); font-weight: 500; text-transform: uppercase; }
+.texto-periodistico h4 { margin: 2.5rem 0 1rem; color: var(--bordo); font-size: 1.35rem; text-align: center; }
+.texto-periodistico > p { margin-top: 0; text-align: justify; }
+.texto-periodistico .ilegible { color: var(--bordo); font-style: italic; }
+.texto-periodistico .epigrafe-transcripto { margin: 2.5rem 0 0; padding-top: 1.5rem; border-top: 1px solid var(--linea); color: var(--tinta-suave); font-style: italic; text-align: center; }
+
+@media (max-width: 900px) {
+  .sociedad, .comparacion-medallas, .periodico-completo { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 700px) {
+  .inscripcion-medalla { grid-template-columns: 1fr; }
+  .inscripcion-medalla > div + div { border-top: 1px solid var(--linea); border-left: 0; }
+  .texto-periodistico { column-count: 1; }
+}
+
+/* Página La vitrina de Juan Vucetich */
+.portada--vitrina h1 { max-width: 14ch; }
+
+.vista-general { background: var(--papel); }
+
+.vitrina-destacada {
+  width: min(100%, 52rem);
+  margin-inline: auto;
+}
+
+.vitrina-destacada .abrir-imagen {
+  aspect-ratio: 3 / 4;
+  border: 1px solid var(--linea);
+}
+
+.vitrina-destacada img,
+.objeto-horizontal img,
+.objeto img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.vitrina-destacada figcaption { font-size: 1.05rem; }
+
+.objetos-personales,
+.piezas-decorativas { background: var(--papel-claro); }
+
+.objeto-horizontal {
+  width: min(100%, 68rem);
+  margin-inline: auto;
+  padding: clamp(1rem, 2.5vw, 1.75rem);
+  border: 1px solid var(--linea);
+  background: var(--papel);
+  box-shadow: 0 10px 30px rgb(53 42 31 / 7%);
+}
+
+.objeto-horizontal .abrir-imagen { aspect-ratio: 4 / 3; }
+
+.galeria-objetos {
+  display: grid;
+  gap: clamp(2rem, 4vw, 3.5rem);
+}
+
+.galeria-objetos--tres { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.galeria-objetos--recuerdos { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+.objeto {
+  padding: clamp(1rem, 2vw, 1.5rem);
+  border: 1px solid var(--linea);
+  background: var(--papel-claro);
+  box-shadow: 0 10px 30px rgb(53 42 31 / 7%);
+}
+
+.porcelanas .objeto,
+.recuerdos .objeto { background: var(--papel-claro); }
+
+.piezas-decorativas .objeto { background: var(--papel); }
+.objeto .abrir-imagen { aspect-ratio: 3 / 4; }
+.objeto--destacado {
+  grid-row: auto;
+  align-self: start;
+}
+.objeto--destacado .abrir-imagen { aspect-ratio: 4 / 3; }
+
+.galeria-objetos--recuerdos .objeto:last-child {
+  margin-top: clamp(-19rem, -20vw, -9rem);
+}
+
+.recuerdos {
+  border-top: 1px solid var(--linea);
+  background: var(--papel);
+}
+
+@media (max-width: 950px) {
+  .galeria-objetos--tres { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 700px) {
+  .galeria-objetos--tres,
+  .galeria-objetos--recuerdos { grid-template-columns: 1fr; }
+  .objeto--destacado { grid-row: auto; }
+  .galeria-objetos--recuerdos .objeto:last-child { margin-top: 0; }
+}

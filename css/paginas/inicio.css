@@ -1,0 +1,86 @@
+@import url("reconocimientos.css");
+
+.encabezado { flex-wrap: wrap; }
+.encabezado nav {
+  order: 3;
+  width: 100%;
+  overflow-x: auto;
+  margin-left: 0;
+  padding-bottom: 0.25rem;
+}
+.encabezado .boton-icono { margin-left: auto; }
+
+.portada--inicio {
+  grid-template-columns: minmax(0, 1fr) minmax(20rem, 31rem);
+  min-height: min(52rem, calc(100vh - 4.5rem));
+  overflow: hidden;
+}
+.portada--inicio h1 { max-width: 11ch; font-size: clamp(3.5rem, 7vw, 7rem); }
+.portada__documento { width: min(100%, 28rem); justify-self: end; transform: rotate(2deg); }
+.portada__documento .abrir-imagen { aspect-ratio: 3 / 4; border: 1px solid var(--linea); }
+.portada__documento img { width: 100%; height: 100%; object-fit: cover; }
+
+.presentacion {
+  display: grid;
+  grid-template-columns: minmax(18rem, 0.8fr) minmax(0, 1.2fr);
+  gap: clamp(3rem, 8vw, 8rem);
+  padding: clamp(5rem, 9vw, 10rem) clamp(1.25rem, 7vw, 8rem);
+  background: var(--bordo-oscuro);
+  color: #fff;
+}
+.presentacion .etiqueta { color: #e3bd78; }
+.presentacion h2 { max-width: 12ch; }
+.presentacion__texto { max-width: 48rem; color: #e8ddcf; font-size: 1.2rem; }
+.presentacion__texto p:first-child { margin-top: 0; }
+
+.recorridos { background: var(--papel); }
+.mapa-recorridos { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2rem; }
+.recorrido {
+  display: grid;
+  grid-template-columns: minmax(13rem, 0.8fr) minmax(0, 1.2fr);
+  min-height: 27rem;
+  overflow: hidden;
+  border: 1px solid var(--linea);
+  background: var(--papel-claro);
+  color: var(--tinta);
+  text-decoration: none;
+  box-shadow: 0 10px 30px rgb(53 42 31 / 7%);
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+.recorrido:hover { transform: translateY(-4px); box-shadow: var(--sombra); }
+.recorrido--amplio { grid-column: 1 / -1; grid-template-columns: minmax(18rem, 1fr) minmax(0, 1fr); min-height: 32rem; }
+.recorrido--horizontal { grid-column: 1 / -1; min-height: 29rem; }
+.recorrido__imagen { min-height: 18rem; overflow: hidden; background: #d8d0c2; }
+.recorrido__imagen img { width: 100%; height: 100%; object-fit: cover; transition: transform 350ms ease; }
+.recorrido:hover .recorrido__imagen img { transform: scale(1.025); }
+.recorrido[href*="cedula"] .recorrido__imagen img,
+.recorrido[href*="medalla"] .recorrido__imagen img,
+.recorrido[href*="reconocimientos"] .recorrido__imagen img { object-fit: contain; }
+.recorrido[href*="lugares"] .recorrido__imagen img { object-fit: cover; }
+.recorrido__texto { display: flex; flex-direction: column; justify-content: center; padding: clamp(1.75rem, 4vw, 3.5rem); }
+.recorrido__texto h3 { margin: 0 0 1rem; font-size: clamp(1.65rem, 3vw, 2.75rem); font-weight: 500; }
+.recorrido__texto > p:last-child { margin-bottom: 0; color: var(--tinta-suave); font-size: 1.05rem; }
+
+.recorrido__imagen--historia { position: relative; display: grid; place-items: center; background: var(--bordo-oscuro); }
+.recorrido__imagen--historia span { position: absolute; width: calc(82% - var(--nivel) * 14%); aspect-ratio: 4 / 5; border: 4px solid #d9b875; border-bottom-color: transparent; border-radius: 50% 50% 42% 42%; }
+.recorrido__imagen--historia span:nth-child(1) { --nivel: 0; }
+.recorrido__imagen--historia span:nth-child(2) { --nivel: 1; }
+.recorrido__imagen--historia span:nth-child(3) { --nivel: 2; }
+.recorrido__imagen--historia span:nth-child(4) { --nivel: 3; }
+
+@media (max-width: 1050px) {
+  .mapa-recorridos { grid-template-columns: 1fr; }
+  .recorrido, .recorrido--amplio, .recorrido--horizontal { grid-column: auto; }
+}
+@media (max-width: 900px) {
+  .portada--inicio, .presentacion { grid-template-columns: 1fr; }
+  .portada--inicio { min-height: auto; }
+  .portada__documento { justify-self: start; }
+}
+@media (max-width: 680px) {
+  .recorrido, .recorrido--amplio, .recorrido--horizontal { grid-template-columns: 1fr; min-height: auto; }
+  .recorrido__imagen { min-height: 19rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .recorrido, .recorrido__imagen img { transition: none; }
+}
